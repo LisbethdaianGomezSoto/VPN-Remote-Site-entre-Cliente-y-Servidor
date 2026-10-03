@@ -351,23 +351,20 @@ mkdir -p /run/sshd
 
 #### 📸 Figura 10 — Servidor: SSH escuchando en el puerto 22 (ss -tlnp)
 
-
-
+![Figura 10](<img width="1515" height="195" alt="image" src="https://github.com/user-attachments/assets/a186da96-6d24-49fc-9378-9fccdd4a0ca4" />)
 
 
 
 ## 💻 Cliente
 
-#### 📸 Figura 11 — WD-3-1: ipconfig sin VPN
+#### 📸 Figura 11 — WD-3-1: ipconfig sin VPN 
 
-
-
-
+![Figura 11](<img width="582" height="298" alt="Captura de pantalla 2026-10-02 234636" src="https://github.com/user-attachments/assets/9d691357-4044-4ea6-9f93-4091fa09b2ae" />)
 
 
 #### 📸 Figura 12 — WD-3-1: ping 8.8.8.8
 
-
+![Figura 12](<img width="382" height="191" alt="image" src="https://github.com/user-attachments/assets/ca861226-ff81-4a32-8139-aaa48fa44a70" />)
 
 
 
@@ -387,6 +384,7 @@ mkdir -p /run/sshd
 #### 📸 Figura 13 — FortiGate: Network > Interfaces
 
 
+![Figura 13](<img width="718" height="422" alt="image" src="https://github.com/user-attachments/assets/5dc69b4b-ff46-4950-8b00-06a4c11c2f6d" />)
 
 
 
@@ -398,7 +396,7 @@ Destination `0.0.0.0/0.0.0.0` · Gateway `200.7.1.9` · Interface `port1`
 #### 📸 Figura 14 — FortiGate: Network > Static Routes
 
 
-
+![Figura 14](<img width="1313" height="143" alt="image" src="https://github.com/user-attachments/assets/4ff55f7c-d5b9-42c0-a854-f5c5a8be8373" />)
 
 
 
@@ -411,7 +409,7 @@ Destination `0.0.0.0/0.0.0.0` · Gateway `200.7.1.9` · Interface `port1`
 
 #### 📸 Figura 15 — FortiGate: Policy & Objects > Addresses
 
-
+![Figura 15](<img width="1345" height="125" alt="image" src="https://github.com/user-attachments/assets/41fd1519-31de-4f94-942d-66e61dbe1101" />)
 
 
 
@@ -423,7 +421,7 @@ Destination `0.0.0.0/0.0.0.0` · Gateway `200.7.1.9` · Interface `port1`
 
 #### 📸 Figura 16 — FortiGate: usuario vpnuser y grupo VPN_USERS
 
-
+![Figura 16](<img width="437" height="205" alt="image" src="https://github.com/user-attachments/assets/bc4405be-6ad2-4f8c-a1fc-b7554bfef7a0" />).
 
 
 
@@ -434,7 +432,7 @@ Destination `0.0.0.0/0.0.0.0` · Gateway `200.7.1.9` · Interface `port1`
 
 #### 📸 Figura 17 — FortiGate: Virtual IP VIP-WEB
 
-
+![Figura 17](<img width="925" height="165" alt="image" src="https://github.com/user-attachments/assets/b0068e7c-8075-41d6-8ce7-4632065c7aa0" />).
 
 
 
@@ -460,20 +458,13 @@ Destination `0.0.0.0/0.0.0.0` · Gateway `200.7.1.9` · Interface `port1`
 
 #### 📸 Figura 18 — FortiGate: túnel VPN-REMOTE, sección Network
 
-
-
-
-
-
-#### 📸 Figura 19 — FortiGate: túnel VPN-REMOTE, Authentication y XAUTH
-
-
-
+![Figura 18](<img width="641" height="597" alt="image" src="https://github.com/user-attachments/assets/fd5b244a-5927-4512-9b9a-d9bc288ef3dd" />).
 
 
 
 #### 📸 Figura 20 — FortiGate: túnel VPN-REMOTE, Fase 1 y Fase 2
 
+![Figura 18](<img width="472" height="508" alt="image" src="https://github.com/user-attachments/assets/334d29b5-fe52-4270-9747-3db1307a7505" />).
 
 
 
