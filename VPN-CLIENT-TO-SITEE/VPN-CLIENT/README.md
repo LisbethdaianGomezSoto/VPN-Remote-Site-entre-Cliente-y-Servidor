@@ -57,6 +57,9 @@ Implementar y demostrar un **acceso seguro a un servidor mediante un FortiGate**
 
 El laboratorio practica direccionamiento IP, VLAN, DHCP, NAT, publicación de servicios con Virtual IP, VPN de acceso remoto (IPsec IKEv1 con XAuth y Mode Config) y políticas de firewall bajo el principio de **mínimo privilegio**. Toda la configuración del FortiGate se realizó por **GUI**.
 
+---
+
+
 ## 🗺️ Diseño de la topología
 
 La red se compone de tres bloques conectados a través de un ISP: el **sitio del cliente** (usuarios en VLAN 10), el **sitio del servidor** protegido por el FortiGate y la salida a **Internet** mediante el nodo NAT de GNS3.
@@ -74,13 +77,7 @@ graph TD
     style CLI fill:#2da44e,color:#fff
 ```
 
-#### 📸 Figura 1 — Topología en GNS3
 
-![Figura 1](images/figura-01-topologia-gns3.png)
-
-#### 📸 Figura 2 — Diagrama del enunciado (Infraestructura 3)
-
-![Figura 2](images/figura-02-diagrama-enunciado.png)
 
 | Dispositivo | Hostname | Función |
 |---|---|---|
@@ -287,27 +284,6 @@ write memory
 
 </details>
 
-### ✅ Verificación
-
-#### 📸 Figura 3 — ISP: show ip interface brief
-
-![Figura 3](images/figura-03-isp-show-ip-interface-brief.png)
-
-#### 📸 Figura 4 — R1: show ip interface brief
-
-![Figura 4](images/figura-04-r1-show-ip-interface-brief.png)
-
-#### 📸 Figura 5 — SW-1: show interfaces trunk
-
-![Figura 5](images/figura-05-sw1-show-interfaces-trunk.png)
-
-#### 📸 Figura 6 — SW-1: show vlan brief
-
-![Figura 6](images/figura-06-sw1-show-vlan-brief.png)
-
-#### 📸 Figura 7 — R1: show ip dhcp binding
-
-![Figura 7](images/figura-07-r1-show-ip-dhcp-binding.png)
 
 ## 🖥️ Servidor web
 
@@ -337,35 +313,8 @@ useradd -m -s /bin/bash usuario
 echo "usuario:Lab0701!" | chpasswd
 mkdir -p /run/sshd
 /usr/sbin/sshd
+
 ```
-
-</details>
-
-#### 📸 Figura 8 — Servidor: ip addr show eth0 e ip route
-
-![Figura 8](images/figura-08-servidor-ip-addr.png)
-
-#### 📸 Figura 9 — Servidor: puertos en escucha (ss -tlnp)
-
-![Figura 9](images/figura-09-servidor-puertos-ss.png)
-
-#### 📸 Figura 10 — Servidor: SSH escuchando en el puerto 22 (ss -tlnp)
-
-![Figura 10](<img width="1515" height="195" alt="image" src="https://github.com/user-attachments/assets/a186da96-6d24-49fc-9378-9fccdd4a0ca4" />)
-
-
-
-## 💻 Cliente
-
-#### 📸 Figura 11 — WD-3-1: ipconfig sin VPN 
-
-![Figura 11](<img width="582" height="298" alt="Captura de pantalla 2026-10-02 234636" src="https://github.com/user-attachments/assets/9d691357-4044-4ea6-9f93-4091fa09b2ae" />)
-
-
-#### 📸 Figura 12 — WD-3-1: ping 8.8.8.8
-
-![Figura 12](<img width="382" height="191" alt="image" src="https://github.com/user-attachments/assets/ca861226-ff81-4a32-8139-aaa48fa44a70" />)
-
 
 
 
@@ -381,22 +330,12 @@ mkdir -p /run/sshd
 | port1 | WAN | `200.7.1.10` / 255.255.255.248 | PING, HTTPS |
 | port2 | LAN | `10.7.1.129` / 255.255.255.240 | PING |
 
-#### 📸 Figura 13 — FortiGate: Network > Interfaces
-
-
-![Figura 13](<img width="718" height="422" alt="image" src="https://github.com/user-attachments/assets/5dc69b4b-ff46-4950-8b00-06a4c11c2f6d" />)
-
 
 
 
 ### 2️⃣ Ruta por defecto — *Network > Static Routes*
 
 Destination `0.0.0.0/0.0.0.0` · Gateway `200.7.1.9` · Interface `port1`
-
-#### 📸 Figura 14 — FortiGate: Network > Static Routes
-
-
-![Figura 14](<img width="1313" height="143" alt="image" src="https://github.com/user-attachments/assets/4ff55f7c-d5b9-42c0-a854-f5c5a8be8373" />)
 
 
 
@@ -407,21 +346,11 @@ Destination `0.0.0.0/0.0.0.0` · Gateway `200.7.1.9` · Interface `port1`
 | `LAN-SERVIDOR` | 10.7.1.128/255.255.255.240 | port2 |
 | `POOL-VPN` | 10.7.2.0/255.255.255.0 | Any |
 
-#### 📸 Figura 15 — FortiGate: Policy & Objects > Addresses
-
-![Figura 15](<img width="1345" height="125" alt="image" src="https://github.com/user-attachments/assets/41fd1519-31de-4f94-942d-66e61dbe1101" />)
-
-
-
 
 ### 4️⃣ Usuario y grupo — *User & Authentication*
 
 - **Local User:** `vpnuser`
 - **User Group:** `VPN_USERS` (tipo Firewall), miembro `vpnuser`
-
-#### 📸 Figura 16 — FortiGate: usuario vpnuser y grupo VPN_USERS
-
-![Figura 16](<img width="437" height="205" alt="image" src="https://github.com/user-attachments/assets/bc4405be-6ad2-4f8c-a1fc-b7554bfef7a0" />).
 
 
 
@@ -429,10 +358,6 @@ Destination `0.0.0.0/0.0.0.0` · Gateway `200.7.1.9` · Interface `port1`
 ### 5️⃣ Virtual IP — *Policy & Objects > Virtual IPs*
 
 `VIP-WEB` · Interface `port1` · External IP `200.7.1.11` · Mapped IP `10.7.1.130` · Port Forwarding **TCP 443 → 443**
-
-#### 📸 Figura 17 — FortiGate: Virtual IP VIP-WEB
-
-![Figura 17](<img width="925" height="165" alt="image" src="https://github.com/user-attachments/assets/b0068e7c-8075-41d6-8ce7-4632065c7aa0" />).
 
 
 
@@ -456,18 +381,6 @@ Destination `0.0.0.0/0.0.0.0` · Gateway `200.7.1.9` · Interface `port1`
 > [!IMPORTANT]
 > El FortiGate-VM con licencia de evaluación solo ofrece **DES**. En un entorno de producción se utilizaría **AES-256 con SHA-256 y DH 14 o superior**.
 
-#### 📸 Figura 18 — FortiGate: túnel VPN-REMOTE, sección Network
-
-![Figura 18](<img width="641" height="597" alt="image" src="https://github.com/user-attachments/assets/fd5b244a-5927-4512-9b9a-d9bc288ef3dd" />).
-
-
-
-#### 📸 Figura 20 — FortiGate: túnel VPN-REMOTE, Fase 1 y Fase 2
-
-![Figura 18](<img width="472" height="508" alt="image" src="https://github.com/user-attachments/assets/334d29b5-fe52-4270-9747-3db1307a7505" />).
-
-
-
 
 
 ### 7️⃣ Políticas de firewall — *Policy & Objects > Firewall Policy*
@@ -479,11 +392,6 @@ Destination `0.0.0.0/0.0.0.0` · Gateway `200.7.1.9` · Interface `port1`
 | `SERVIDOR-A-VPN` | port2 | VPN-REMOTE | LAN-SERVIDOR | POOL-VPN | ALL | No |
 
 Action **ACCEPT** en las tres. **No existe ninguna política que permita SSH desde port1**: el SSH al servidor solo es posible a través del túnel.
-
-#### 📸 Figura 21 — FortiGate: políticas de firewall
-
-
-
 
 
 
@@ -498,25 +406,6 @@ Action **ACCEPT** en las tres. **No existe ninguna política que permita SSH des
 
 En **Advanced Settings**: IKE versión 1, modo Aggressive y propuestas DES / SHA256 / DH 14, iguales a las del FortiGate.
 
-#### 📸 Figura 22 — FortiClient: configuración de la conexión
-
-
-
-
-
-
-#### 📸 Figura 23 — FortiClient: estado Connected
-
-
-
-
-
-
-#### 📸 Figura 24 — WD-3-1: ipconfig con la VPN conectada
-
-
-
-
 
 
 ## 🧪 Pruebas de funcionamiento
@@ -529,38 +418,6 @@ En **Advanced Settings**: IKE versión 1, modo Aggressive y propuestas DES / SHA
 | 4 | SSH con VPN: `ssh usuario@10.7.1.130` | **Acceso concedido** |
 | 5 | Traceroute: `tracert 10.7.1.130` | Pasa por el FortiGate y llega al servidor |
 | 6 | FortiGate: Monitor > IPsec Monitor | `VPN-REMOTE` activo con `vpnuser` |
-
-#### 📸 Figura 25 — Web sin VPN: https://200.7.1.11
-
-
-
-
-
-
-#### 📸 Figura 26 — SSH sin VPN hacia 200.7.1.11 (falla)
-
-
-
-
-
-
-#### 📸 Figura 27 — SSH con VPN: ssh usuario@10.7.1.130
-
-
-
-
-
-
-#### 📸 Figura 28 — Traceroute: tracert 10.7.1.130
-
-
-
-
-
-
-#### 📸 Figura 29 — FortiGate: Monitor > IPsec Monitor
-
-
 
 
 
