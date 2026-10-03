@@ -168,7 +168,7 @@ hostname ISP
 ip name-server 8.8.8.8
 
 interface FastEthernet0/1
- description HACIA-R2
+ description HACIA-R1
  ip address 200.7.1.1 255.255.255.252
  ip nat inside
  no shutdown
@@ -373,10 +373,10 @@ Destination `0.0.0.0/0.0.0.0` · Gateway `200.7.1.9` · Interface `port1`
 | Authentication | Método | Pre-shared Key |
 | Authentication | IKE / Mode / Peer ID | Versión 1 / Aggressive / Any peer ID |
 | XAUTH | Type / Group | Auto Server / `VPN_USERS` |
-| Phase 1 | Cifrado / Auth / DH | DES / SHA256 / 14 |
+| Phase 1 | Cifrado / Auth / DH | DES / SHA1 / 2 |
 | Phase 2 | Selectores | 0.0.0.0/0 ↔ 0.0.0.0/0 |
-| Phase 2 | Cifrado / Auth | DES / SHA256 |
-| Phase 2 | PFS | Activado · DH 14 |
+| Phase 2 | Cifrado / Auth | DES / SHA1 |
+| Phase 2 | PFS | Activado · DH 2 |
 
 > [!IMPORTANT]
 > El FortiGate-VM con licencia de evaluación solo ofrece **DES**. En un entorno de producción se utilizaría **AES-256 con SHA-256 y DH 14 o superior**.
@@ -744,21 +744,9 @@ line vty 0 4
  transport input ssh
 !
 end
-```
-
-</details>
-
-<details>
-<summary><b>🛡️ FortiGate</b></summary>
 
 ```
 
-
-
-
-
-
-```
 
 </details>
 
