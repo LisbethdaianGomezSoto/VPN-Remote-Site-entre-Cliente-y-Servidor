@@ -21,7 +21,7 @@ Profesor: **Jonathan Rondón** · Octubre 2026
 
 <div align="center">
 
-### [▶️ Ver el video demostrativo](ENLACE-DEL-VIDEO)
+### [▶️ Ver el video demostrativo](https://youtu.be/yQBdTHzGysI)
 
 </div>
 
